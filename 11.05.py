@@ -1,0 +1,60 @@
+from tkinter import *
+from tkinter import messagebox
+
+def show():
+    global photo
+    photo = PhotoImage(file='photo_2022-12-30_13-22-18.png')
+    label5.configure(image=photo)
+
+def inf():
+    s = edit4.get()
+    if s == "111":
+        messagebox.showinfo("Про спеціальність", s + "\nСпеціальність 111 Математика\nОсвітня програма Комп'ютерна математика")
+    elif s == "СОМ" or s == "014":
+        messagebox.showinfo("Про спеціальність", s + "\nСпеціальність 014 Середня освіта\nОсвітня програма Середня освіта. Математика, інформатика")
+    else:
+        messagebox.showinfo("Про спеціальність", s + "\nТакої спеціальності на факультеті немає")
+
+root = Tk()
+root.geometry('400x550+500+100')
+root.title("Анкета")
+
+
+Label(root, text="Прізвище:", justify=CENTER).grid(row=0, column=0, sticky=E, padx=5, pady=5)
+edit1 = Entry(root, width=25)
+edit1.grid(row=0, column=1, padx=5, pady=5)
+
+
+Label(root, text="Ім'я:", justify=CENTER).grid(row=1, column=0, sticky=E, padx=5, pady=5)
+entry2 = Entry(root, width=25)
+entry2.grid(row=1, column=1, padx=5, pady=5)
+
+
+Label(root, text="По батькові:", justify=CENTER).grid(row=2, column=0, sticky=E, padx=5, pady=5)
+entry3 = Entry(root, width=25)
+entry3.grid(row=2, column=1, padx=5, pady=5)
+
+
+checkbutton1 = Checkbutton(root, text='ч')
+checkbutton1.grid(row=3, column=0, padx=5, pady=5)
+checkbutton2 = Checkbutton(root, text='ж')
+checkbutton2.grid(row=3, column=1, padx=5, pady=5)
+
+
+Label(root, text="Виберіть курс:").grid(row=4, column=0, padx=5, pady=5)
+result1 = IntVar()
+result1.set(1)
+Radiobutton(root, text=1, variable=result1, value=1).grid(row=5, column=0, padx=5, pady=2)
+Radiobutton(root, text=2, variable=result1, value=2).grid(row=5, column=1, padx=5, pady=2)
+Radiobutton(root, text=3, variable=result1, value=3).grid(row=6, column=0, padx=5, pady=2)
+Radiobutton(root, text=4, variable=result1, value=4).grid(row=6, column=1, padx=5, pady=2)
+
+label5 = Label(root, text="Спеціальність")
+label5.grid(row=7, column=0, padx=5, pady=5)
+edit4 = Entry(root, width=25)
+edit4.grid(row=7, column=1, padx=5, pady=5)
+
+Button(root, text="Про спеціальність", width=20, command=inf).grid(row=8, column=0, columnspan=2, pady=10)
+Button(root, text="Фото", width=20, command=show).grid(row=9, column=0, columnspan=2, pady=10)
+
+root.mainloop()
